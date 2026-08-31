@@ -1,0 +1,12 @@
+{
+  "name": "speedpulse-speedtest",
+  "version": "1.0.0",
+  "description": "High-performance real-time speed test and gaming telemetry suite",
+  "main": "public/index.html",
+  "scripts": {
+    "start": "serve public"
+  },
+  "keywords": ["speedtest", "internet-speed", "ping-test", "esports"],
+  "author": "swankysoumya",
+  "license": "MIT"
+}
