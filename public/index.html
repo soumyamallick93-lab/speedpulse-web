@@ -6,9 +6,9 @@
 
   <!-- Core Google SEO Suite -->
   <title>SpeedPulse — Free Internet Speed Test, WiFi & 5G Broadband Checker</title>
-  <meta name="description" content="SpeedPulse by KOSHLIVA LABS. Accurate real-time internet speed test measuring download, upload, ping latency, jitter, and continuous bulk bandwidth stress testing."[cite: 1]>
-  <meta name="keywords" content="speed test, internet speed test, wifi speed test, broadband speed test, 5g speed test, check internet speed, koshliva labs, speedpulse, data stress test, ping test"[cite: 1]>
-  <meta name="author" content="KOSHLIVA LABS"[cite: 1]>
+  <meta name="description" content="SpeedPulse by KOSHLIVA LABS. Accurate real-time internet speed test measuring download, upload, ping latency, jitter, and continuous bulk bandwidth stress testing[cite: 1].">
+  <meta name="keywords" content="speed test, internet speed test, wifi speed test, broadband speed test, 5g speed test, check internet speed, koshliva labs, speedpulse, data stress test, ping test[cite: 1]">
+  <meta name="author" content="KOSHLIVA LABS[cite: 1]">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://speedpulse.site/">
 
@@ -22,7 +22,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://speedpulse.site/">
   <meta property="og:title" content="SpeedPulse — Free Internet Speed Test by KOSHLIVA LABS">
-  <meta property="og:description" content="Accurate internet speed test, ping diagnostics, and bulk bandwidth stress benchmark."[cite: 1]>
+  <meta property="og:description" content="Accurate internet speed test, ping diagnostics, and bulk bandwidth stress benchmark[cite: 1].">
   <meta property="og:site_name" content="SpeedPulse | KOSHLIVA LABS">
 
   <!-- JSON-LD Structured Data Schema -->
@@ -48,7 +48,7 @@
           "@type": "Organization",
           "name": "KOSHLIVA LABS"
         },
-        "description": "Enterprise-grade internet speed test measuring download speed, upload speed, latency, jitter, and continuous line stress benchmarking.",
+        "description": "Enterprise-grade internet speed test measuring download speed, upload speed, latency, jitter, and continuous line stress benchmarking[cite: 1].",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
       }
     ]
@@ -240,7 +240,7 @@
       background: rgba(225, 48, 108, 0.2);
     }
 
-    /* Fixed Telemetry Dashboard Grid (Equal columns to prevent IP cutoff) */
+    /* Telemetry Dashboard Grid */
     .provider-controls-bar {
       display: grid;
       grid-template-columns: 1fr 1fr 1.2fr;
@@ -440,6 +440,22 @@
       cursor: pointer;
       flex-shrink: 0;
     }
+
+    /* Dynamic Greeting & Live Clock Banner */
+    .greeting-clock-bar {
+      background: var(--surface-base);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      backdrop-filter: blur(24px);
+    }
+    .greeting-clock-bar .wish { color: var(--accent); font-weight: 700; }
+    .greeting-clock-bar .clock { color: var(--text-muted); font-weight: 600; }
 
     /* 1TB Bulk Stress Tester */
     .stress-panel {
@@ -690,6 +706,8 @@
       .meta-box { padding: 10px 12px; font-size: 0.74rem; }
       .meta-box .lbl { font-size: 0.62rem; }
 
+      .greeting-clock-bar { flex-direction: column; gap: 4px; text-align: center; }
+
       .bento-grid { grid-template-columns: 1fr; gap: 10px; }
       .bento-card { padding: 16px 14px; }
       .gauge-wrapper { width: 200px; height: 200px; }
@@ -742,7 +760,13 @@
       </nav>
     </header>
 
-    <!-- Telemetry Dashboard with IP Cut Fix (Proper Grid proportions) -->
+    <!-- Dynamic Greeting & Live Clock Banner -->
+    <div class="greeting-clock-bar">
+      <div class="wish" id="dynamicWishText">Loading Greeting...</div>
+      <div class="clock" id="liveClockText">Loading Time...</div>
+    </div>
+
+    <!-- Comprehensive Telemetry Dashboard with Accurate PC/Mobile Recognition -->
     <div class="provider-controls-bar">
       <div class="meta-box">
         <div>
@@ -980,6 +1004,34 @@
     }
     initTheme();
 
+    /* Live Time & Dynamic Greeting Engine */
+    function updateLiveClockAndWishes() {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      
+      let greeting = "";
+      if (hours >= 4 && hours < 12) {
+        greeting = "🌅 Good Morning, Welcome to SpeedPulse!";
+      } else if (hours >= 12 && hours < 17) {
+        greeting = "☀️ Good Afternoon! Ready for your speed test?";
+      } else if (hours >= 17 && hours < 21) {
+        greeting = "🌆 Good Evening! Checking your evening bandwidth?";
+      } else {
+        greeting = "🌙 Good Night! Late night speed diagnostics active.";
+      }
+
+      const timeStr = `${now.toLocaleDateString()} | ${hours % 12 || 12}:${minutes}:${seconds} ${hours >= 12 ? 'PM' : 'AM'}`;
+      
+      const wishEl = document.getElementById('dynamicWishText');
+      const clockEl = document.getElementById('liveClockText');
+      if (wishEl) wishEl.innerText = greeting;
+      if (clockEl) clockEl.innerText = `🕒 ${timeStr}`;
+    }
+    setInterval(updateLiveClockAndWishes, 1000);
+    updateLiveClockAndWishes();
+
     let currentIspName = "Indinet Broadband";
     let selectedServerName = "Kolkata Hub";
     let optimalBenchmarkHost = "https://speed.cloudflare.com";
@@ -992,7 +1044,7 @@
         .trim();
     }
 
-    /* Universal Device & Brand Detector */
+    /* Universal PC & Mobile Hardware/Brand Detector */
     async function detectUserDevice() {
       const ua = navigator.userAgent;
       let brand = "Desktop PC";
@@ -1017,14 +1069,23 @@
         } catch (e) {}
       }
 
-      if (/samsung/i.test(ua)) {
+      if (/dell/i.test(ua)) { brand = "Dell"; model = "Inspiron / Latitude PC"; }
+      else if (/hp|hewlett-packard/i.test(ua)) { brand = "HP"; model = "Pavilion / Victus PC"; }
+      else if (/lenovo/i.test(ua)) { brand = "Lenovo"; model = "ThinkPad / IdeaPad PC"; }
+      else if (/asus/i.test(ua) && !/phone/i.test(ua)) { brand = "Asus"; model = "ROG / Vivobook PC"; }
+      else if (/acer/i.test(ua)) { brand = "Acer"; model = "Aspire / Predator PC"; }
+      else if (/msi/i.test(ua)) { brand = "MSI"; model = "Gaming Desktop / Laptop"; }
+      else if (/macintosh|mac os x/i.test(ua)) {
+        brand = "Apple Mac";
+        model = navigator.maxTouchPoints > 1 ? "Apple Silicon Mac" : "MacBook / iMac";
+      } else if (/samsung/i.test(ua)) {
         brand = "Samsung";
         const match = ua.match(/SM-[A-Z0-9]+/i);
-        model = match ? match[0] : "Galaxy Device";
+        model = match ? match[0] : "Galaxy Smartphone";
       } else if (/vivo/i.test(ua)) {
         brand = "Vivo";
         const match = ua.match(/vivo\s+[^\s)]+/i);
-        model = match ? match[0] : "Vivo Smartphone";
+        model = match ? match[0] : "Vivo Handset";
       } else if (/oppo/i.test(ua)) {
         brand = "Oppo";
         const match = ua.match(/CPH[0-9]+/i);
@@ -1038,9 +1099,9 @@
         const match = ua.match(/IN[0-9]+|LE[0-9]+|NE[0-9]+|NE22[0-9]+|CPH[0-9]+/i);
         model = match ? match[0] : "OnePlus Device";
       } else if (/xiaomi|redmi|poco|mi\s/i.test(ua)) {
-        brand = "Xiaomi / Redmi / POCO";
+        brand = "Xiaomi / Redmi";
         const match = ua.match(/(M[0-9]{4}[A-Z]{1}[0-9]{1}|Redmi\s+[^\s)]+|POCO\s+[^\s)]+|Mi\s+[^\s)]+)/i);
-        model = match ? match[0] : "Xiaomi Handset";
+        model = match ? match[0] : "Redmi / POCO Handset";
       } else if (/iphone/i.test(ua)) {
         brand = "Apple";
         model = "iPhone";
@@ -1050,9 +1111,6 @@
       } else if (/motorola|moto/i.test(ua)) {
         brand = "Motorola";
         model = "Moto Device";
-      } else if (/huawei|honor/i.test(ua)) {
-        brand = "Huawei / Honor";
-        model = "EMUI Device";
       } else if (/iqoo/i.test(ua)) {
         brand = "iQOO";
         model = "iQOO Gaming Phone";
@@ -1062,34 +1120,17 @@
       } else if (/infinix/i.test(ua)) {
         brand = "Infinix";
         model = "Infinix Mobile";
-      } else if (/itel/i.test(ua)) {
-        brand = "Itel";
-        model = "Itel Device";
-      } else if (/nokia/i.test(ua)) {
-        brand = "Nokia";
-        model = "Nokia Smartphone";
-      } else if (/asus|rog/i.test(ua)) {
+      } else if (/asus/i.test(ua)) {
         brand = "Asus";
-        model = /rog/i.test(ua) ? "ROG Phone" : "Asus Device";
-      } else if (/lenovo/i.test(ua)) {
-        brand = "Lenovo";
-        model = "Lenovo Device";
-      } else if (/win|macintosh|cros|linux/i.test(ua) && !/mobile|android/i.test(ua)) {
-        if (/windows nt 10/i.test(ua)) {
-          brand = "PC / Desktop";
-          model = "Windows 10/11 System";
-        } else if (/macintosh/i.test(ua)) {
-          brand = "Apple Mac";
-          model = "MacBook / iMac Desktop";
-        } else if (/cros/i.test(ua)) {
-          brand = "Google";
-          model = "Chromebook";
-        } else {
-          brand = "Desktop Workstation";
-          model = "Linux / Unix PC";
-        }
+        model = "Asus Phone";
+      } else if (/win/i.test(ua)) {
+        brand = "PC Desktop";
+        model = "Windows System";
+      } else if (/linux/i.test(ua)) {
+        brand = "Linux";
+        model = "Workstation";
       } else {
-        brand = "Universal";
+        brand = "Mobile Device";
         model = "Web Client";
       }
 
@@ -1450,7 +1491,7 @@
 
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-          if (res.body && res.body.getReader) {
+            if (res.body && res.body.getReader) {
             const reader = res.body.getReader();
             while (stressActive && sessionId === stressSessionId) {
               const { done, value } = await reader.read();
