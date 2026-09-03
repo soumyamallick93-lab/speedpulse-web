@@ -93,7 +93,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { max-width: 100%; overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
+    html, body { width: 100%; max-width: 100vw; overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
 
     body {
       background-color: var(--bg);
@@ -257,6 +257,10 @@
       align-items: center;
       font-family: var(--font-mono);
       font-size: 0.8rem;
+      min-width: 0;
+    }
+    .meta-box > div {
+      min-width: 0;
     }
     .meta-box .lbl { color: var(--text-muted); font-size: 0.68rem; text-transform: uppercase; margin-bottom: 2px; }
     .meta-box .val { font-weight: 700; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -278,12 +282,14 @@
       flex-direction: column;
       justify-content: space-between;
       gap: 14px;
+      min-width: 0;
     }
 
     .gauge-wrapper {
       position: relative;
       width: 240px;
       height: 240px;
+      max-width: 100%;
       margin: 0 auto;
       display: flex;
       justify-content: center;
@@ -346,9 +352,10 @@
       border-radius: var(--radius-md);
       padding: 10px 8px;
       text-align: center;
+      min-width: 0;
     }
-    .dock-tile .lbl { font-size: 0.64rem; color: var(--text-muted); font-family: var(--font-mono); font-weight: 600; text-transform: uppercase; }
-    .dock-tile .val { font-size: 1.2rem; font-weight: 800; font-family: var(--font-mono); margin-top: 3px; }
+    .dock-tile .lbl { font-size: 0.64rem; color: var(--text-muted); font-family: var(--font-mono); font-weight: 600; text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .dock-tile .val { font-size: 1.2rem; font-weight: 800; font-family: var(--font-mono); margin-top: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
     .section-title {
       font-size: 0.72rem;
@@ -368,9 +375,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      min-width: 0;
+      gap: 8px;
+    }
+    .grade-display > div {
+      min-width: 0;
     }
 
-    .grade-val { font-size: 1.8rem; font-weight: 900; color: var(--accent); font-family: var(--font-mono); }
+    .grade-val { font-size: 1.8rem; font-weight: 900; color: var(--accent); font-family: var(--font-mono); flex-shrink: 0; }
 
     .targets-stack {
       display: flex;
@@ -388,9 +400,11 @@
       align-items: center;
       font-family: var(--font-mono);
       font-size: 0.74rem;
+      gap: 8px;
+      min-width: 0;
     }
-    .target-node .dest { color: var(--text-muted); }
-    .target-node .lat { font-weight: 700; color: var(--accent); }
+    .target-node .dest { color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+    .target-node .lat { font-weight: 700; color: var(--accent); flex-shrink: 0; }
 
     .btn-actions-row { display: flex; gap: 8px; }
 
@@ -407,6 +421,7 @@
       cursor: pointer;
       font-family: var(--font-mono);
       animation: btnGrad 6s ease infinite;
+      min-width: 0;
     }
     @keyframes btnGrad {
       0% { background-position: 0% 50%; }
@@ -423,6 +438,7 @@
       border-radius: var(--radius-md);
       font-family: var(--font-mono);
       cursor: pointer;
+      flex-shrink: 0;
     }
 
     /* 1TB Bulk Stress Tester */
@@ -432,6 +448,7 @@
       border-radius: var(--radius-lg);
       padding: 22px;
       backdrop-filter: blur(24px);
+      min-width: 0;
     }
 
     .stress-header {
@@ -452,6 +469,7 @@
       font-family: var(--font-mono);
       font-size: 0.68rem;
       font-weight: 700;
+      flex-shrink: 0;
     }
 
     .stress-grid {
@@ -467,9 +485,10 @@
       border-radius: var(--radius-md);
       padding: 10px;
       text-align: center;
+      min-width: 0;
     }
-    .stress-tile .lbl { font-size: 0.62rem; color: var(--text-muted); font-family: var(--font-mono); text-transform: uppercase; }
-    .stress-tile .val { font-size: 1.15rem; font-weight: 800; font-family: var(--font-mono); color: var(--text-main); margin-top: 4px; }
+    .stress-tile .lbl { font-size: 0.62rem; color: var(--text-muted); font-family: var(--font-mono); text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .stress-tile .val { font-size: 1.15rem; font-weight: 800; font-family: var(--font-mono); color: var(--text-main); margin-top: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
     .stress-progress-bar {
       width: 100%;
@@ -541,12 +560,13 @@
       line-height: 1.8;
       font-size: 0.86rem;
       color: var(--text-muted);
+      min-width: 0;
     }
-    .seo-article h1 { color: var(--text-main); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; }
-    .seo-article h2 { color: var(--text-main); font-size: 1.05rem; font-weight: 700; margin: 18px 0 8px 0; }
-    .seo-article p { margin-bottom: 10px; }
+    .seo-article h1 { color: var(--text-main); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; word-break: break-word; }
+    .seo-article h2 { color: var(--text-main); font-size: 1.05rem; font-weight: 700; margin: 18px 0 8px 0; word-break: break-word; }
+    .seo-article p { margin-bottom: 10px; word-break: break-word; }
     .seo-article ul { margin-left: 20px; margin-bottom: 12px; }
-    .seo-article li { margin-bottom: 4px; }
+    .seo-article li { margin-bottom: 4px; word-break: break-word; }
 
     .featured-guides-bar {
       display: grid;
@@ -563,6 +583,7 @@
       text-decoration: none;
       display: block;
       transition: border-color 0.2s, transform 0.2s;
+      min-width: 0;
     }
     .guide-card:hover {
       border-color: var(--accent);
@@ -572,12 +593,14 @@
       font-size: 0.9rem;
       color: var(--text-main);
       margin-bottom: 4px;
+      word-break: break-word;
     }
     .guide-card p {
       font-size: 0.76rem;
       color: var(--text-muted);
       line-height: 1.5;
       margin-bottom: 0;
+      word-break: break-word;
     }
 
     /* Corporate Footer */
@@ -592,6 +615,7 @@
       text-align: center;
       gap: 14px;
       backdrop-filter: blur(24px);
+      min-width: 0;
     }
 
     .footer-brand .company-name {
@@ -628,6 +652,7 @@
       border-top: 1px solid var(--border);
       padding-top: 12px;
       width: 100%;
+      word-break: break-word;
     }
 
     .toast-msg {
@@ -645,17 +670,19 @@
       display: none;
       z-index: 200;
       box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      max-width: 90vw;
+      text-align: center;
     }
 
     /* Mobile Responsive Optimizations */
     @media (max-width: 768px) {
       body { padding: 10px 8px; }
-      .app-viewport { gap: 10px; }
+      .app-viewport { gap: 10px; max-width: 100%; overflow-x: hidden; }
       .studio-glow { width: 100vw; height: 250px; top: -40px; filter: blur(50px); }
       .top-nav { padding: 10px 14px; }
-      .brand-mark { font-size: 0.88rem; }
+      .brand-mark { font-size: 0.88rem; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
       .brand-company-tag { display: none; }
-      .nav-links { gap: 6px; }
+      .nav-links { gap: 6px; flex-shrink: 0; }
       .nav-item { display: none; }
       .insta-chip { font-size: 0.7rem; padding: 4px 8px; }
 
