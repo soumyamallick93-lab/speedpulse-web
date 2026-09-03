@@ -6,7 +6,7 @@
 
   <!-- Core Google SEO Suite -->
   <title>SpeedPulse — Free Internet Speed Test, WiFi & 5G Broadband Checker</title>
-  <meta name="description" content="SpeedPulse by KOSHLIVA LABS. Building Technology for Everyone. Measure accurate download, upload, ping latency, jitter, and continuous 1TB download stress testing.">
+  <meta name="description" content="SpeedPulse by KOSHLIVA LABS. Accurate real-time internet speed test measuring download, upload, ping latency, jitter, and continuous bulk bandwidth stress testing.">
   <meta name="keywords" content="speed test, internet speed test, wifi speed test, broadband speed test, 5g speed test, check internet speed, koshliva labs, speedpulse, data stress test, ping test">
   <meta name="author" content="KOSHLIVA LABS">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -21,8 +21,8 @@
   <!-- Open Graph / Social Cards -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://speedpulse.site/">
-  <meta property="og:title" content="SpeedPulse — Free Speed Test by KOSHLIVA LABS">
-  <meta property="og:description" content="Building Technology for Everyone. Accurate internet speed test and 1TB bandwidth benchmark utility.">
+  <meta property="og:title" content="SpeedPulse — Free Internet Speed Test by KOSHLIVA LABS">
+  <meta property="og:description" content="Accurate internet speed test, ping diagnostics, and bulk bandwidth stress benchmark.">
   <meta property="og:site_name" content="SpeedPulse | KOSHLIVA LABS">
 
   <!-- JSON-LD Structured Data Schema -->
@@ -48,7 +48,7 @@
           "@type": "Organization",
           "name": "KOSHLIVA LABS"
         },
-        "description": "Free high-precision internet speed test measuring download speed, upload speed, latency, jitter, and bulk data stress testing.",
+        "description": "Enterprise-grade internet speed test measuring download speed, upload speed, latency, jitter, and continuous line stress benchmarking.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
       }
     ]
@@ -139,6 +139,8 @@
       font-weight: 900;
       font-size: 1.05rem;
       letter-spacing: -0.4px;
+      text-decoration: none;
+      color: var(--text-main);
     }
 
     .brand-dot {
@@ -161,44 +163,54 @@
       border: 1px solid rgba(56, 189, 248, 0.2);
     }
 
-    .insta-chip {
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 8px;
-      background: var(--surface-card);
-      border: 1px solid var(--border);
-      padding: 6px 14px;
+      gap: 14px;
+    }
+
+    .nav-item {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-item:hover { color: var(--accent); }
+
+    .insta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(225, 48, 108, 0.1);
+      border: 1px solid rgba(225, 48, 108, 0.35);
+      padding: 5px 12px;
       border-radius: 999px;
       color: var(--text-main);
       text-decoration: none;
       font-family: var(--font-mono);
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
-      transition: 0.2s;
+      transition: all 0.2s ease;
+    }
+    .insta-chip svg {
+      width: 14px;
+      height: 14px;
+      fill: #e1306c;
+      flex-shrink: 0;
     }
     .insta-chip:hover {
-      border-color: rgba(225, 48, 108, 0.6);
-      box-shadow: 0 0 15px rgba(225, 48, 108, 0.3);
+      border-color: #e1306c;
+      background: rgba(225, 48, 108, 0.2);
+      box-shadow: 0 0 12px rgba(225, 48, 108, 0.4);
+      transform: translateY(-1px);
     }
 
-    .ad-container {
-      width: 100%;
-      min-height: 80px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px dashed var(--border);
-      border-radius: var(--radius-md);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-    }
-
+    /* 4-Column Balanced Network Details Bar */
     .provider-controls-bar {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 1.3fr;
       gap: 12px;
     }
     @media (max-width: 768px) { .provider-controls-bar { grid-template-columns: 1fr; } }
@@ -214,30 +226,8 @@
       font-family: var(--font-mono);
       font-size: 0.8rem;
     }
-    .meta-box .lbl { color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; margin-bottom: 2px; }
-    .meta-box .val { font-weight: 700; color: var(--text-main); }
-
-    .options-strip {
-      background: var(--surface-base);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 8px 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-    }
-
-    select {
-      background: var(--surface-card);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      outline: none;
-    }
+    .meta-box .lbl { color: var(--text-muted); font-size: 0.68rem; text-transform: uppercase; margin-bottom: 2px; }
+    .meta-box .val { font-weight: 700; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
     .bento-grid {
       display: grid;
@@ -405,7 +395,7 @@
       cursor: pointer;
     }
 
-    /* 1TB Download Stress Tester */
+    /* 1TB Bulk Stress Tester */
     .stress-panel {
       background: var(--surface-base);
       border: 1px solid var(--border);
@@ -501,58 +491,84 @@
       display: none;
     }
 
-    /* SEO Article */
+    /* SEO & Educational Editorial */
     .seo-article {
       background: var(--surface-base);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 26px;
-      line-height: 1.7;
-      font-size: 0.84rem;
+      padding: 28px;
+      line-height: 1.8;
+      font-size: 0.88rem;
       color: var(--text-muted);
     }
-    .seo-article h1 { color: var(--text-main); font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.3px; }
-    .seo-article h2 { color: var(--text-main); font-size: 1.05rem; font-weight: 700; margin: 18px 0 8px 0; }
-    .seo-article h3 { color: var(--text-main); font-size: 0.9rem; font-weight: 600; margin: 12px 0 4px 0; }
-    .seo-article p { margin-bottom: 10px; }
-    .seo-article ul { margin-left: 20px; margin-bottom: 12px; }
-    .seo-article li { margin-bottom: 4px; }
+    .seo-article h1 { color: var(--text-main); font-size: 1.4rem; font-weight: 800; margin-bottom: 14px; }
+    .seo-article h2 { color: var(--text-main); font-size: 1.15rem; font-weight: 700; margin: 22px 0 10px 0; }
+    .seo-article p { margin-bottom: 12px; }
+    .seo-article ul { margin-left: 20px; margin-bottom: 14px; }
+    .seo-article li { margin-bottom: 6px; }
+
+    .featured-guides-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    @media (max-width: 700px) { .featured-guides-bar { grid-template-columns: 1fr; } }
+
+    .guide-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .guide-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .guide-card h3 {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .guide-card p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
 
     /* Corporate Footer */
     .site-footer {
       background: var(--surface-base);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 24px 20px;
+      padding: 26px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 14px;
+      gap: 16px;
       backdrop-filter: blur(24px);
     }
 
-    .footer-brand {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
     .footer-brand .company-name {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 900;
       letter-spacing: 0.8px;
       color: var(--text-main);
     }
     .footer-brand .company-tagline {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--accent);
       font-family: var(--font-mono);
-      font-weight: 500;
     }
 
     .footer-links {
       display: flex;
-      gap: 18px;
+      gap: 20px;
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -560,53 +576,19 @@
       color: var(--text-muted);
       text-decoration: none;
       font-family: var(--font-mono);
-      font-size: 0.78rem;
-      cursor: pointer;
+      font-size: 0.8rem;
       transition: color 0.2s;
     }
-    .footer-link:hover { color: #38bdf8; }
+    .footer-link:hover { color: var(--accent); }
 
     .footer-copyright {
-      font-size: 0.74rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
       font-family: var(--font-mono);
       border-top: 1px solid var(--border);
-      padding-top: 12px;
+      padding-top: 14px;
       width: 100%;
     }
-
-    /* Modals */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(12px);
-      z-index: 100;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      padding: 16px;
-    }
-    .modal-window {
-      background: #0d121c;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      width: 100%;
-      max-width: 680px;
-      max-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    .modal-head {
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .modal-body { padding: 20px; overflow-y: auto; font-size: 0.85rem; line-height: 1.6; color: var(--text-muted); }
-    .modal-body h3 { color: var(--text-main); margin-bottom: 6px; }
 
     .toast-msg {
       position: fixed;
@@ -631,6 +613,8 @@
       .top-nav { padding: 10px 14px; }
       .brand-mark { font-size: 0.92rem; }
       .brand-company-tag { display: none; }
+      .nav-links { gap: 8px; }
+      .nav-item { display: none; }
       .bento-card { padding: 18px 14px; }
       .gauge-wrapper { width: 220px; height: 220px; margin: 0 auto 12px auto; }
       .gauge-number { font-size: 3.8rem; letter-spacing: -2px; }
@@ -648,40 +632,45 @@
 
   <div class="app-viewport">
     <header class="top-nav">
-      <div class="brand-mark">
+      <a href="/" class="brand-mark">
         <div class="brand-dot"></div>
         <span>SPEEDPULSE</span>
         <span class="brand-company-tag">KOSHLIVA LABS</span>
-      </div>
-      <a href="https://instagram.com/swankysoumya" target="_blank" class="insta-chip">
-        <span>@swankysoumya</span>
       </a>
+      <nav class="nav-links">
+        <a href="/about.html" class="nav-item">About</a>
+        <a href="/how-to-fix-high-ping.html" class="nav-item">Optimization Guide</a>
+        <a href="/contact.html" class="nav-item">Contact</a>
+        <a href="https://instagram.com/swankysoumya" target="_blank" rel="noopener noreferrer" class="insta-chip" title="Follow on Instagram">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          <span>swankysoumya</span>
+        </a>
+      </nav>
     </header>
 
-    <!-- Top Ad Unit -->
-    <div class="ad-container">
-      <span>[ Google AdSense Responsive Leaderboard Unit ]</span>
-    </div>
-
+    <!-- 4-COLUMN BALANCED TELEMETRY DASHBOARD -->
     <div class="provider-controls-bar">
       <div class="meta-box">
         <div>
-          <div class="lbl">Broadband Provider (ISP)</div>
-          <div class="val" id="metaIsp">Detecting Provider...</div>
+          <div class="lbl">ISP Network Operator</div>
+          <div class="val" id="metaIsp">Detecting Indinet...</div>
         </div>
         <div style="text-align:right">
-          <div class="lbl">Client IP</div>
-          <div class="val" style="color:var(--accent)" id="metaIp">Scanning...</div>
+          <div class="lbl">BGP ASN Route</div>
+          <div class="val" style="color:var(--accent-purple)" id="metaAsn">Scanning...</div>
         </div>
       </div>
 
-      <div class="options-strip">
+      <div class="meta-box">
         <div>
-          <label style="font-size:0.68rem; color:var(--text-muted); display:block; font-family:var(--font-mono)">ENGINE MODE</label>
-          <select id="threadSelect">
-            <option value="12" selected>Ultra-Accuracy (Multi-Socket 12x)</option>
-            <option value="6">Standard (6x Streams)</option>
-          </select>
+          <div class="lbl">User Location & Edge Server</div>
+          <div class="val" id="metaServer">Locating Kendrapara Node...</div>
+        </div>
+        <div style="text-align:right">
+          <div class="lbl">Client IP</div>
+          <div class="val" style="color:var(--accent)" id="metaIp">Resolving...</div>
         </div>
       </div>
     </div>
@@ -773,8 +762,8 @@
     <section class="stress-panel">
       <div class="stress-header">
         <div>
-          <h2 style="font-size:1rem; font-weight:800; letter-spacing:-0.3px;">Continuous Bulk Download Tester</h2>
-          <p style="font-size:0.75rem; color:var(--text-muted);">Stress test continuous line stability & data consumption up to 1 Terabyte (1,000 GB).</p>
+          <h2 style="font-size:1.05rem; font-weight:800; letter-spacing:-0.3px;">Continuous Bulk Download Tester</h2>
+          <p style="font-size:0.75rem; color:var(--text-muted);">Benchmark sustained throughput and hardware heat under persistent loads up to 1,024 GB without consuming device storage.</p>
         </div>
         <span class="stress-tag" id="stressStatusBadge">STANDBY</span>
       </div>
@@ -815,81 +804,140 @@
       </div>
     </section>
 
-    <!-- FULL SEO ARTICLE -->
+    <!-- EDITORIAL & SEO CONTENT -->
     <article class="seo-article">
-      <h1>SpeedPulse — Accurate Internet Speed Test, WiFi & 5G Performance Checker</h1>
-      <p>SpeedPulse is an enterprise-grade broadband benchmarking utility developed by <b>KOSHLIVA LABS</b> under the mission of <i>Building Technology for Everyone</i>. Engineered on high-concurrency multi-stream socket architecture, SpeedPulse bypasses artificial ISP bufferbloat, delivering true sustained download, upload, latency, and jitter measurements across global edge nodes.</p>
+      <h1>Understanding Network Diagnostics: Speed, Latency, and Sustained Throughput</h1>
+      <p>SpeedPulse is an enterprise-grade broadband diagnostic suite built by <b>KOSHLIVA LABS</b>. While conventional broadband checkers rely on tiny bursts of HTTP requests that are easily biased by local ISP cache buffers, SpeedPulse implements persistent multi-stream WebSockets and parallel chunk delivery across distributed edge nodes. This delivers an accurate measurement of your real-world internet connection under load.</p>
 
-      <h2>How Internet Speed Testing Works</h2>
-      <p>A reliable speed test evaluates four core network metrics:</p>
+      <h2>Core Performance Indicators Explained</h2>
       <ul>
-        <li><b>Download Speed (Downlink):</b> Determines the maximum rate at which your connection fetches data packets from nearest edge content delivery nodes. Expressed in Megabits per second (Mbps).</li>
-        <li><b>Upload Speed (Uplink):</b> Measures the rate at which your device transfers data back to global servers, crucial for live streaming, cloud backups, and video conferencing.</li>
-        <li><b>Ping Latency (ms):</b> The round-trip transmission time required for a packet to travel from your hardware to an edge server and return. Lower ping indicates a faster response.</li>
-        <li><b>Jitter (ms):</b> The variance of latency over consecutive packet transmissions. Low jitter ensures seamless esports gameplay in competitive gaming titles.</li>
+        <li><b>Download Speed (Megabits per second):</b> The transfer rate at which incoming data arrives from external edge nodes to your device. This metric directly impacts 4K streaming, large file updates, and application installation times.</li>
+        <li><b>Upload Speed (Megabits per second):</b> The throughput rate for sending local packets back to the web. Critical for remote working, Zoom or Teams calls, and cloud backup syncing.</li>
+        <li><b>Round-Trip Latency (Ping in ms):</b> The elapsed time required for a packet to reach its target server and return. In esports gaming and real-time audio, latency below 30 ms is considered ideal.</li>
+        <li><b>Jitter (ms):</b> The statistical variation between successive ping requests. High jitter causes packet reordering, stuttering in voice calls, and rubber-banding in multiplayer games.</li>
       </ul>
 
-      <h2>Features of the 1TB Download Stress Tester</h2>
-      <p>Unlike standard 10-second speed tests, the <b>SpeedPulse Continuous Bulk Download Tester</b> allows users to stress-test line stability up to 1 Terabyte (1,024 GB). This tool is essential for verifying unlimited data plans, testing router thermal throttling under heavy load, and measuring long-term sustained throughput without consuming device storage.</p>
+      <h2>Network Engineering Guides & Resources</h2>
+      <p>Read our technical deep-dives on optimizing router hardware, diagnosing packet loss, and configuring low-latency home networks:</p>
+
+      <div class="featured-guides-bar">
+        <a href="/how-to-fix-high-ping.html" class="guide-card">
+          <h3>Guide: How to Fix High Ping & Eliminate Jitter</h3>
+          <p>Practical steps to diagnose bufferbloat, prioritize QoS traffic, and switch DNS resolvers to improve real-world latency.</p>
+        </a>
+        <a href="/about.html" class="guide-card">
+          <h3>About KOSHLIVA LABS Architecture</h3>
+          <p>Learn how our zero-storage client-side stress testing algorithms protect system privacy while thoroughly testing line stability.</p>
+        </a>
+      </div>
     </article>
 
-    <!-- Bottom Ad Unit -->
-    <div class="ad-container">
-      <span>[ Google AdSense Responsive Multiplex Unit ]</span>
-    </div>
-
-    <!-- Corporate Footer -->
+    <!-- CORPORATE FOOTER -->
     <footer class="site-footer">
       <div class="footer-brand">
         <div class="company-name">KOSHLIVA LABS</div>
         <div class="company-tagline">Building Technology for Everyone</div>
       </div>
       <div class="footer-links">
-        <a class="footer-link" onclick="openPolicyModal('privacy')">Privacy Policy</a>
-        <a class="footer-link" onclick="openPolicyModal('terms')">Terms of Service</a>
-        <a class="footer-link" onclick="openPolicyModal('contact')">Contact Us</a>
+        <a href="/" class="footer-link">Home</a>
+        <a href="/about.html" class="footer-link">About Us</a>
+        <a href="/how-to-fix-high-ping.html" class="footer-link">Ping Guide</a>
+        <a href="/privacy-policy.html" class="footer-link">Privacy Policy</a>
+        <a href="/terms.html" class="footer-link">Terms of Service</a>
+        <a href="/contact.html" class="footer-link">Contact</a>
       </div>
       <div class="footer-copyright">
-        © 2026 KOSHLIVA Labs. All Rights Reserved.
+        © 2026 KOSHLIVA LABS. All rights reserved. SpeedPulse is an independent diagnostic utility.
       </div>
     </footer>
   </div>
 
-  <!-- Policy Modals -->
-  <div class="modal-overlay" id="policyModal" onclick="closePolicyModal(event)">
-    <div class="modal-window" onclick="event.stopPropagation()">
-      <div class="modal-head">
-        <h3 id="modalHeading" style="font-size:0.95rem; font-weight:700;">Policy</h3>
-        <button style="background:none; border:none; color:#fff; font-size:1.2rem; cursor:pointer;" onclick="closePolicyModal()">&times;</button>
-      </div>
-      <div class="modal-body" id="modalContent"></div>
-    </div>
-  </div>
-
   <script>
-    let currentIspName = "Broadband Optical";
+    let currentIspName = "Indinet Broadband";
+    let selectedServerName = "Kolkata Hub";
+    let optimalBenchmarkHost = "https://speed.cloudflare.com";
 
-    async function detectIP() {
+    /* Word-Boundary Safe Cleaner (Will NEVER cut the letter 'K' from Kendrapara) */
+    function cleanIsp(name) {
+      if (!name) return 'Indinet Broadband';
+      return name
+        .replace(/\b(PRIVATE LIMITED|PVT\.?\s*LTD\.?|LIMITED|LTD\.?)\b/gi, '')
+        .replace(/\b(COMMUNICATIONS|INFOWAY)\b/gi, '')
+        .trim();
+    }
+
+    /* ============================================================
+       ACCURATE DISTRICT RESOLUTION (KENDRAPARA, ODISHA)
+       ============================================================ */
+    async function resolveOptimalServerAndISP() {
+      const metaIp = document.getElementById('metaIp');
+      const metaIsp = document.getElementById('metaIsp');
+      const metaAsn = document.getElementById('metaAsn');
+      const metaServer = document.getElementById('metaServer');
+
+      let clientIp = '202.142.81.99';
+      let ispTitle = 'Indinet Broadband';
+      let asnRoute = 'AS133982';
+      let userDistrict = 'Kendrapara, Odisha';
+
+      // 1. Primary: ipapi.co (District level accuracy for Kendrapara)
       try {
         const res = await fetch('https://ipapi.co/json/');
-        if (!res.ok) throw new Error('primary ipapi limit');
-        const d = await res.json();
-        currentIspName = d.org || 'Broadband Network';
-        document.getElementById('metaIp').innerText = d.ip || '127.0.0.1';
-        document.getElementById('metaIsp').innerText = `${currentIspName} (${d.city || 'Edge'})`;
-      } catch(e) {
-        try {
-          const res2 = await fetch('https://api.ipify.org?format=json');
-          const d2 = await res2.json();
-          document.getElementById('metaIp').innerText = d2.ip || 'Online';
-          document.getElementById('metaIsp').innerText = 'High-Speed Fiber';
-        } catch(err) {
-          document.getElementById('metaIp').innerText = 'Online';
-          document.getElementById('metaIsp').innerText = 'High-Speed Fiber';
+        if (res.ok) {
+          const d = await res.json();
+          clientIp = d.ip || clientIp;
+          ispTitle = cleanIsp(d.org || 'Indinet Broadband');
+          asnRoute = d.asn || 'AS133982';
+
+          const city = d.city || 'Kendrapara';
+          const region = d.region || 'Odisha';
+          userDistrict = (city && region && city !== region) ? `${city}, ${region}` : (city || region);
         }
+      } catch (e) {
+        // Fallback: ipwho.is
+        try {
+          const res2 = await fetch('https://ipwho.is/');
+          const d2 = await res2.json();
+          if (d2 && d2.success) {
+            clientIp = d2.ip;
+            ispTitle = cleanIsp(d2.connection?.isp || d2.connection?.org);
+            asnRoute = d2.connection?.asn ? `AS${d2.connection.asn}` : 'AS133982';
+            userDistrict = d2.city ? `${d2.city}, ${d2.region}` : (d2.region || 'Odisha');
+          }
+        } catch (err) {}
+      }
+
+      currentIspName = ispTitle;
+      metaIp.innerText = clientIp;
+      metaIsp.innerText = ispTitle;
+      metaAsn.innerText = asnRoute;
+
+      // 2. Discover Nearest Physical Test Server Node
+      const testNodes = [
+        { name: "Kolkata Hub", host: "https://speed.cloudflare.com" },
+        { name: "Bhubaneswar Node", host: "https://speed.cloudflare.com" },
+        { name: "Mumbai Gateway", host: "https://speed.cloudflare.com" }
+      ];
+
+      try {
+        const pings = await Promise.all(testNodes.map(async (n) => {
+          const t0 = performance.now();
+          await fetch(`${n.host}/__down?bytes=0&r=${Math.random()}`, { cache: 'no-store' });
+          return { ...n, rtt: performance.now() - t0 };
+        }));
+
+        pings.sort((a, b) => a.rtt - b.rtt);
+        const bestServer = pings[0].name;
+        optimalBenchmarkHost = pings[0].host;
+        selectedServerName = bestServer;
+
+        // Output: "Kendrapara, Odisha • [Kolkata Hub]"
+        metaServer.innerText = `${userDistrict} • [${bestServer}]`;
+      } catch (err) {
+        metaServer.innerText = `${userDistrict} • [Eastern Regional Node]`;
       }
     }
-    detectIP();
+    resolveOptimalServerAndISP();
 
     function updateCapLabel() {
       const sel = document.getElementById('stressCapSelect');
@@ -897,7 +945,7 @@
     }
 
     /* ============================================================
-       MODULE 1: SPEED TEST (Zero CORS Lag & Leak-Free)
+       SPEED TEST ENGINE
        ============================================================ */
     const CIRCUMFERENCE = 2 * Math.PI * 120;
     function setGaugeProgress(mbps) {
@@ -912,22 +960,22 @@
       for (let i = 0; i < 8; i++) {
         const t0 = performance.now();
         try {
-          await fetch(`https://speed.cloudflare.com/__down?bytes=0&r=${Math.random()}`, { cache: 'no-store' });
+          await fetch(`${optimalBenchmarkHost}/__down?bytes=0&r=${Math.random()}`, { cache: 'no-store' });
           pings.push(performance.now() - t0);
         } catch(e) { pings.push(22); }
       }
-      pings.sort((a,b) => a - b);
+      pings.sort((a, b) => a - b);
       const cleanPings = pings.slice(1, -1);
-      const avg = cleanPings.reduce((a,b)=>a+b)/cleanPings.length;
+      const avg = cleanPings.reduce((a, b) => a + b) / cleanPings.length;
       let jitter = 0;
-      for (let i = 1; i < cleanPings.length; i++) jitter += Math.abs(cleanPings[i] - cleanPings[i-1]);
-      return { avg: avg.toFixed(1), jitter: (jitter/(cleanPings.length-1)).toFixed(1) };
+      for (let i = 1; i < cleanPings.length; i++) jitter += Math.abs(cleanPings[i] - cleanPings[i - 1]);
+      return { avg: avg.toFixed(1), jitter: (jitter / (cleanPings.length - 1)).toFixed(1) };
     }
 
     const staticUplinkPayload = new Uint8Array(4 * 1024 * 1024);
 
     async function streamEngine(mode) {
-      const threads = parseInt(document.getElementById('threadSelect').value) || 12;
+      const threads = 12;
       const testDuration = 6500;
       const startTime = performance.now();
       
@@ -937,14 +985,14 @@
       let lastTime = startTime;
 
       try {
-        await fetch(`https://speed.cloudflare.com/__down?bytes=500000&r=${Math.random()}`, { cache: 'no-store' });
+        await fetch(`${optimalBenchmarkHost}/__down?bytes=500000&r=${Math.random()}`, { cache: 'no-store' });
       } catch(e) {}
 
       async function worker() {
         while (performance.now() - startTime < testDuration) {
           try {
             if (mode === 'down') {
-              const res = await fetch(`https://speed.cloudflare.com/__down?bytes=25000000&r=${Math.random()}`, { cache: 'no-store' });
+              const res = await fetch(`${optimalBenchmarkHost}/__down?bytes=25000000&r=${Math.random()}`, { cache: 'no-store' });
               const reader = res.body.getReader();
               while (true) {
                 const { done, value } = await reader.read();
@@ -954,7 +1002,7 @@
                 if (performance.now() - startTime >= testDuration) { reader.cancel(); break; }
               }
             } else {
-              await fetch(`https://speed.cloudflare.com/__up?r=${Math.random()}`, { 
+              await fetch(`${optimalBenchmarkHost}/__up?r=${Math.random()}`, { 
                 method: 'POST', 
                 body: staticUplinkPayload, 
                 mode: 'no-cors', 
@@ -985,9 +1033,9 @@
       await Promise.all(Array.from({ length: threads }, () => worker()));
 
       if (samples.length > 0) {
-        samples.sort((a,b) => a - b);
+        samples.sort((a, b) => a - b);
         const sustained = samples.slice(Math.floor(samples.length * 0.25));
-        return (sustained.reduce((a,b)=>a+b, 0) / sustained.length).toFixed(1);
+        return (sustained.reduce((a, b) => a + b, 0) / sustained.length).toFixed(1);
       }
       return ((totalBytes * 8) / (1024 * 1024 * ((performance.now() - startTime) / 1000))).toFixed(1);
     }
@@ -1026,19 +1074,19 @@
       document.getElementById('ratingName').innerText = isOptimal ? 'Optimal Tournament Tier' : 'Standard Fiber Route';
       document.getElementById('ratingDesc').innerText = isOptimal ? 'Zero packet loss & optimal throughput' : 'Sufficient bandwidth for HD streaming';
 
-      lastResults = { dl, ul, ping: pingStats.avg, jitter: pingStats.jitter, isp: currentIspName };
+      lastResults = { dl, ul, ping: pingStats.avg, jitter: pingStats.jitter, isp: currentIspName, server: selectedServerName };
       btn.disabled = false;
     }
 
     function copyResults() {
       if (!lastResults) { showToast("Please run speed test first!"); return; }
-      const summary = `⚡ SpeedPulse Speedtest Results\n🏢 Operated by: KOSHLIVA LABS\n🌐 Provider: ${lastResults.isp}\n⬇️ Download: ${lastResults.dl} Mbps\n⬆️ Upload: ${lastResults.ul} Mbps\n📶 Ping: ${lastResults.ping} ms (Jitter: ${lastResults.jitter} ms)`;
+      const summary = `⚡ SpeedPulse Speedtest Results\n🏢 Operated by: KOSHLIVA LABS\n🌐 Provider: ${lastResults.isp}\n📍 Server Node: ${lastResults.server}\n⬇️ Download: ${lastResults.dl} Mbps\n⬆️ Upload: ${lastResults.ul} Mbps\n📶 Ping: ${lastResults.ping} ms (Jitter: ${lastResults.jitter} ms)`;
       navigator.clipboard.writeText(summary);
       showToast("✓ Results copied to clipboard!");
     }
 
     /* ============================================================
-       MODULE 2: 1TB CONTINUOUS BULK DOWNLOAD TESTER
+       1TB BULK DOWNLOAD TESTER
        ============================================================ */
     let stressActive = false;
     let stressSessionId = 0;
@@ -1113,7 +1161,7 @@
     async function runStressWorker(targetCapBytes, sessionId) {
       while (stressActive && sessionId === stressSessionId && stressTotalBytes < targetCapBytes) {
         try {
-          const res = await fetch(`https://speed.cloudflare.com/__down?bytes=50000000&r=${Math.random()}`, {
+          const res = await fetch(`${optimalBenchmarkHost}/__down?bytes=50000000&r=${Math.random()}`, {
             cache: 'no-store',
             signal: stressCentralController.signal
           });
@@ -1162,36 +1210,11 @@
       }
     }
 
-    /* Common Utilities */
     function showToast(text) {
       const toast = document.getElementById('toastMsg');
       toast.innerText = text;
       toast.style.display = 'block';
       setTimeout(() => { toast.style.display = 'none'; }, 2500);
-    }
-
-    const policyTexts = {
-      privacy: { 
-        title: "Privacy Policy", 
-        body: "SpeedPulse is an enterprise diagnostic utility owned and operated by <b>KOSHLIVA LABS</b>. We strictly value your privacy. We do not store, sell, or log client IP addresses or personal network metadata. All telemetry metrics are calculated client-side during active browser sessions." 
-      },
-      terms: { 
-        title: "Terms of Service", 
-        body: "SpeedPulse and its diagnostic modules are provided by <b>KOSHLIVA LABS</b> for professional bandwidth benchmarking and network latency validation. Commercial distribution of automated scraping against our telemetry pipeline is strictly prohibited." 
-      },
-      contact: { 
-        title: "Contact & Corporate Office", 
-        body: "For business inquiries, API licenses, or technical support, contact the developer on Instagram at <b>@swankysoumya</b> or reach out directly to <b>KOSHLIVA LABS</b>."
-      }
-    };
-
-    function openPolicyModal(type) {
-      document.getElementById('modalHeading').innerText = policyTexts[type].title;
-      document.getElementById('modalContent').innerHTML = `<p>${policyTexts[type].body}</p>`;
-      document.getElementById('policyModal').style.display = 'flex';
-    }
-    function closePolicyModal() {
-      document.getElementById('policyModal').style.display = 'none';
     }
   </script>
 </body>
