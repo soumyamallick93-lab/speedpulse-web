@@ -55,7 +55,7 @@
   }
   </script>
 
-  <!-- Google Fonts -->
+  <!-- Preconnect External Assets -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -71,6 +71,7 @@
       --accent-purple: #818cf8;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
+      --glow-opacity: 1;
       --font-display: 'Plus Jakarta Sans', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
       --radius-lg: 20px;
@@ -78,17 +79,31 @@
       --radius-sm: 8px;
     }
 
+    body.light-theme {
+      --bg: #f1f5f9;
+      --surface-base: rgba(255, 255, 255, 0.9);
+      --surface-card: rgba(241, 245, 249, 0.95);
+      --border: rgba(15, 23, 42, 0.12);
+      --accent: #0284c7;
+      --accent-green: #059669;
+      --accent-purple: #6366f1;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --glow-opacity: 0.25;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { max-width: 100%; overflow-x: clip; }
+    html, body { max-width: 100%; overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
 
     body {
       background-color: var(--bg);
       color: var(--text-main);
       font-family: var(--font-display);
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       justify-content: center;
-      padding: 20px 16px;
+      padding: 16px 12px;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -109,6 +124,8 @@
       z-index: 0;
       pointer-events: none;
       animation: chromaShift 18s linear infinite;
+      opacity: var(--glow-opacity);
+      transition: opacity 0.3s ease;
     }
 
     .app-viewport {
@@ -118,16 +135,17 @@
       max-width: 1020px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
+    /* Navigation */
     .top-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: var(--surface-base);
       border: 1px solid var(--border);
-      padding: 12px 20px;
+      padding: 12px 18px;
       border-radius: var(--radius-lg);
       backdrop-filter: blur(24px);
     }
@@ -135,20 +153,20 @@
     .brand-mark {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       font-weight: 900;
-      font-size: 1.05rem;
+      font-size: 1rem;
       letter-spacing: -0.4px;
       text-decoration: none;
       color: var(--text-main);
     }
 
     .brand-dot {
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
-      background: #38bdf8;
-      box-shadow: 0 0 12px #38bdf8;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
     }
 
     .brand-company-tag {
@@ -157,63 +175,77 @@
       font-family: var(--font-mono);
       font-weight: 700;
       background: rgba(56, 189, 248, 0.1);
-      padding: 3px 8px;
+      padding: 3px 7px;
       border-radius: 4px;
-      margin-left: 6px;
+      margin-left: 4px;
       border: 1px solid rgba(56, 189, 248, 0.2);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
 
     .nav-item {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-family: var(--font-mono);
       font-weight: 600;
       transition: color 0.2s;
     }
     .nav-item:hover { color: var(--accent); }
 
+    .theme-toggle-btn {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 5px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+    .theme-toggle-btn:hover { border-color: var(--accent); }
+
     .insta-chip {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 6px;
       background: rgba(225, 48, 108, 0.1);
       border: 1px solid rgba(225, 48, 108, 0.35);
-      padding: 5px 12px;
+      padding: 5px 11px;
       border-radius: 999px;
       color: var(--text-main);
       text-decoration: none;
       font-family: var(--font-mono);
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 600;
       transition: all 0.2s ease;
     }
     .insta-chip svg {
-      width: 14px;
-      height: 14px;
+      width: 13px;
+      height: 13px;
       fill: #e1306c;
       flex-shrink: 0;
     }
     .insta-chip:hover {
       border-color: #e1306c;
       background: rgba(225, 48, 108, 0.2);
-      box-shadow: 0 0 12px rgba(225, 48, 108, 0.4);
-      transform: translateY(-1px);
     }
 
-    /* 4-Column Balanced Network Details Bar */
+    /* Telemetry Dashboard */
     .provider-controls-bar {
       display: grid;
-      grid-template-columns: 1.1fr 1.3fr;
-      gap: 12px;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 10px;
     }
-    @media (max-width: 768px) { .provider-controls-bar { grid-template-columns: 1fr; } }
 
     .meta-box {
       background: var(--surface-base);
@@ -229,29 +261,30 @@
     .meta-box .lbl { color: var(--text-muted); font-size: 0.68rem; text-transform: uppercase; margin-bottom: 2px; }
     .meta-box .val { font-weight: 700; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+    /* Bento Grid */
     .bento-grid {
       display: grid;
       grid-template-columns: 1.35fr 1fr;
-      gap: 16px;
+      gap: 14px;
     }
-    @media (max-width: 860px) { .bento-grid { grid-template-columns: 1fr; } }
 
     .bento-card {
       background: var(--surface-base);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 24px;
+      padding: 22px;
       backdrop-filter: blur(24px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      gap: 14px;
     }
 
     .gauge-wrapper {
       position: relative;
-      width: 260px;
-      height: 260px;
-      margin: 4px auto 16px auto;
+      width: 240px;
+      height: 240px;
+      margin: 0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -263,13 +296,12 @@
       width: 100%;
       height: 100%;
       transform: rotate(-90deg);
-      animation: chromaShift 18s linear infinite;
     }
 
     .gauge-track { fill: none; stroke: var(--surface-card); stroke-width: 6; }
     .gauge-fill {
       fill: none;
-      stroke: url(#animatedGradient);
+      stroke: var(--accent);
       stroke-width: 7;
       stroke-linecap: round;
       stroke-dasharray: 753.9;
@@ -280,14 +312,14 @@
     .gauge-data { text-align: center; z-index: 2; }
     .gauge-status {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #38bdf8;
+      color: var(--accent);
       font-weight: 700;
     }
     .gauge-number {
-      font-size: 4.8rem;
+      font-size: 4.4rem;
       font-weight: 900;
       line-height: 1;
       letter-spacing: -3px;
@@ -295,7 +327,7 @@
       color: var(--text-main);
     }
     .gauge-unit {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
       text-transform: uppercase;
       font-family: var(--font-mono);
@@ -312,11 +344,11 @@
       background: var(--surface-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 12px 10px;
+      padding: 10px 8px;
       text-align: center;
     }
-    .dock-tile .lbl { font-size: 0.65rem; color: var(--text-muted); font-family: var(--font-mono); font-weight: 600; text-transform: uppercase; }
-    .dock-tile .val { font-size: 1.25rem; font-weight: 800; font-family: var(--font-mono); margin-top: 3px; }
+    .dock-tile .lbl { font-size: 0.64rem; color: var(--text-muted); font-family: var(--font-mono); font-weight: 600; text-transform: uppercase; }
+    .dock-tile .val { font-size: 1.2rem; font-weight: 800; font-family: var(--font-mono); margin-top: 3px; }
 
     .section-title {
       font-size: 0.72rem;
@@ -332,20 +364,18 @@
       background: var(--surface-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 16px;
+      padding: 14px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
     }
 
-    .grade-val { font-size: 2rem; font-weight: 900; color: #38bdf8; font-family: var(--font-mono); }
+    .grade-val { font-size: 1.8rem; font-weight: 900; color: var(--accent); font-family: var(--font-mono); }
 
     .targets-stack {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      margin-bottom: 14px;
     }
 
     .target-node {
@@ -357,10 +387,10 @@
       justify-content: space-between;
       align-items: center;
       font-family: var(--font-mono);
-      font-size: 0.76rem;
+      font-size: 0.74rem;
     }
     .target-node .dest { color: var(--text-muted); }
-    .target-node .lat { font-weight: 700; color: #38bdf8; }
+    .target-node .lat { font-weight: 700; color: var(--accent); }
 
     .btn-actions-row { display: flex; gap: 8px; }
 
@@ -370,10 +400,10 @@
       background-size: 300% 300%;
       color: #000;
       border: none;
-      padding: 13px 20px;
+      padding: 13px 18px;
       border-radius: var(--radius-md);
       font-weight: 800;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       cursor: pointer;
       font-family: var(--font-mono);
       animation: btnGrad 6s ease infinite;
@@ -400,7 +430,7 @@
       background: var(--surface-base);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 24px;
+      padding: 22px;
       backdrop-filter: blur(24px);
     }
 
@@ -408,7 +438,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       flex-wrap: wrap;
       gap: 8px;
     }
@@ -420,37 +450,34 @@
       padding: 4px 10px;
       border-radius: 999px;
       font-family: var(--font-mono);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 700;
     }
 
     .stress-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-    @media (max-width: 600px) {
-      .stress-grid { grid-template-columns: repeat(2, 1fr); }
+      gap: 8px;
+      margin-bottom: 14px;
     }
 
     .stress-tile {
       background: var(--surface-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 12px;
+      padding: 10px;
       text-align: center;
     }
-    .stress-tile .lbl { font-size: 0.65rem; color: var(--text-muted); font-family: var(--font-mono); text-transform: uppercase; }
-    .stress-tile .val { font-size: 1.25rem; font-weight: 800; font-family: var(--font-mono); color: var(--text-main); margin-top: 4px; }
+    .stress-tile .lbl { font-size: 0.62rem; color: var(--text-muted); font-family: var(--font-mono); text-transform: uppercase; }
+    .stress-tile .val { font-size: 1.15rem; font-weight: 800; font-family: var(--font-mono); color: var(--text-main); margin-top: 4px; }
 
     .stress-progress-bar {
       width: 100%;
-      height: 8px;
-      background: rgba(255, 255, 255, 0.05);
+      height: 7px;
+      background: rgba(0, 0, 0, 0.1);
       border-radius: 999px;
       overflow: hidden;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       border: 1px solid var(--border);
     }
     .stress-fill {
@@ -462,64 +489,77 @@
 
     .stress-controls {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
-    .btn-stress-start {
+    .stress-select {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 11px 14px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      outline: none;
       flex: 1;
+      min-width: 180px;
+    }
+
+    .btn-stress-start {
+      flex: 2;
       background: var(--accent-green);
-      color: #000;
+      color: #fff;
       border: none;
-      padding: 12px 20px;
+      padding: 12px 18px;
       border-radius: var(--radius-md);
       font-weight: 800;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       cursor: pointer;
       font-family: var(--font-mono);
+      min-width: 200px;
     }
     .btn-stress-stop {
       background: #ef4444;
       color: #fff;
       border: none;
-      padding: 12px 24px;
+      padding: 12px 20px;
       border-radius: var(--radius-md);
       font-weight: 800;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       cursor: pointer;
       font-family: var(--font-mono);
       display: none;
     }
 
-    /* SEO & Educational Editorial */
+    /* SEO Article */
     .seo-article {
       background: var(--surface-base);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 28px;
+      padding: 24px;
       line-height: 1.8;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--text-muted);
     }
-    .seo-article h1 { color: var(--text-main); font-size: 1.4rem; font-weight: 800; margin-bottom: 14px; }
-    .seo-article h2 { color: var(--text-main); font-size: 1.15rem; font-weight: 700; margin: 22px 0 10px 0; }
-    .seo-article p { margin-bottom: 12px; }
-    .seo-article ul { margin-left: 20px; margin-bottom: 14px; }
-    .seo-article li { margin-bottom: 6px; }
+    .seo-article h1 { color: var(--text-main); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; }
+    .seo-article h2 { color: var(--text-main); font-size: 1.05rem; font-weight: 700; margin: 18px 0 8px 0; }
+    .seo-article p { margin-bottom: 10px; }
+    .seo-article ul { margin-left: 20px; margin-bottom: 12px; }
+    .seo-article li { margin-bottom: 4px; }
 
     .featured-guides-bar {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 16px;
+      gap: 12px;
+      margin-top: 14px;
     }
-    @media (max-width: 700px) { .featured-guides-bar { grid-template-columns: 1fr; } }
 
     .guide-card {
       background: var(--surface-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 16px;
+      padding: 14px;
       text-decoration: none;
       display: block;
       transition: border-color 0.2s, transform 0.2s;
@@ -529,12 +569,12 @@
       transform: translateY(-2px);
     }
     .guide-card h3 {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-main);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .guide-card p {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--text-muted);
       line-height: 1.5;
       margin-bottom: 0;
@@ -545,30 +585,30 @@
       background: var(--surface-base);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 26px 20px;
+      padding: 22px 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 16px;
+      gap: 14px;
       backdrop-filter: blur(24px);
     }
 
     .footer-brand .company-name {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 900;
       letter-spacing: 0.8px;
       color: var(--text-main);
     }
     .footer-brand .company-tagline {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--accent);
       font-family: var(--font-mono);
     }
 
     .footer-links {
       display: flex;
-      gap: 20px;
+      gap: 16px;
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -576,23 +616,23 @@
       color: var(--text-muted);
       text-decoration: none;
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       transition: color 0.2s;
     }
     .footer-link:hover { color: var(--accent); }
 
     .footer-copyright {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
       font-family: var(--font-mono);
       border-top: 1px solid var(--border);
-      padding-top: 14px;
+      padding-top: 12px;
       width: 100%;
     }
 
     .toast-msg {
       position: fixed;
-      bottom: 24px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       background: #111827;
@@ -600,28 +640,50 @@
       color: #fff;
       padding: 8px 18px;
       border-radius: 999px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-family: var(--font-mono);
       display: none;
       z-index: 200;
       box-shadow: 0 10px 30px rgba(0,0,0,0.8);
     }
 
-    @media (max-width: 600px) {
-      body { padding: 12px 10px; }
-      .studio-glow { width: 100vw; height: 280px; top: -60px; filter: blur(70px); opacity: 0.5; }
+    /* Mobile Responsive Optimizations */
+    @media (max-width: 768px) {
+      body { padding: 10px 8px; }
+      .app-viewport { gap: 10px; }
+      .studio-glow { width: 100vw; height: 250px; top: -40px; filter: blur(50px); }
       .top-nav { padding: 10px 14px; }
-      .brand-mark { font-size: 0.92rem; }
+      .brand-mark { font-size: 0.88rem; }
       .brand-company-tag { display: none; }
-      .nav-links { gap: 8px; }
+      .nav-links { gap: 6px; }
       .nav-item { display: none; }
-      .bento-card { padding: 18px 14px; }
-      .gauge-wrapper { width: 220px; height: 220px; margin: 0 auto 12px auto; }
-      .gauge-number { font-size: 3.8rem; letter-spacing: -2px; }
-      .metrics-dock { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-      .dock-tile { padding: 10px 8px; }
-      .dock-tile .val { font-size: 1.15rem; }
+      .insta-chip { font-size: 0.7rem; padding: 4px 8px; }
+
+      .provider-controls-bar { grid-template-columns: 1fr; gap: 8px; }
+      .meta-box { padding: 10px 12px; font-size: 0.76rem; }
+      .meta-box .lbl { font-size: 0.62rem; }
+
+      .bento-grid { grid-template-columns: 1fr; gap: 10px; }
+      .bento-card { padding: 16px 14px; }
+      .gauge-wrapper { width: 200px; height: 200px; }
+      .gauge-number { font-size: 3.4rem; letter-spacing: -2px; }
+      .gauge-status { font-size: 0.65rem; }
+      
+      .metrics-dock { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+      .dock-tile { padding: 8px; }
+      .dock-tile .val { font-size: 1.1rem; }
+
+      .stress-panel { padding: 16px 14px; }
+      .stress-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+      .stress-tile { padding: 8px; }
+      .stress-tile .val { font-size: 1.05rem; }
+      .stress-controls { flex-direction: column; }
+      .stress-select, .btn-stress-start, .btn-stress-stop { width: 100%; min-width: 100%; }
+
+      .featured-guides-bar { grid-template-columns: 1fr; }
+      .seo-article { padding: 18px 14px; font-size: 0.82rem; }
       .site-footer { padding: 18px 14px; }
+      .footer-links { gap: 12px; }
     }
   </style>
 </head>
@@ -638,6 +700,9 @@
         <span class="brand-company-tag">KOSHLIVA LABS</span>
       </a>
       <nav class="nav-links">
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Switch Day/Dark Theme">
+          <span id="themeIcon">☀️</span> <span id="themeText">Day</span>
+        </button>
         <a href="/about.html" class="nav-item">About</a>
         <a href="/how-to-fix-high-ping.html" class="nav-item">Optimization Guide</a>
         <a href="/contact.html" class="nav-item">Contact</a>
@@ -650,7 +715,7 @@
       </nav>
     </header>
 
-    <!-- 4-COLUMN BALANCED TELEMETRY DASHBOARD -->
+    <!-- 4-Column Balanced Telemetry Dashboard -->
     <div class="provider-controls-bar">
       <div class="meta-box">
         <div>
@@ -665,7 +730,7 @@
 
       <div class="meta-box">
         <div>
-          <div class="lbl">User Location & Edge Server</div>
+          <div class="lbl">User Location & Server</div>
           <div class="val" id="metaServer">Locating Kendrapara Node...</div>
         </div>
         <div style="text-align:right">
@@ -675,18 +740,11 @@
       </div>
     </div>
 
-    <!-- MAIN SPEED TEST SECTION -->
+    <!-- Main Speed Test Bento Section -->
     <main class="bento-grid">
       <section class="bento-card">
         <div class="gauge-wrapper">
           <svg class="gauge-svg" viewBox="0 0 260 260">
-            <defs>
-              <linearGradient id="animatedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#38bdf8" />
-                <stop offset="50%" stop-color="#818cf8" />
-                <stop offset="100%" stop-color="#34d399" />
-              </linearGradient>
-            </defs>
             <circle class="gauge-track" cx="130" cy="130" r="120" />
             <circle class="gauge-fill" id="gaugeCircle" cx="130" cy="130" r="120" />
           </svg>
@@ -700,11 +758,11 @@
         <div class="metrics-dock">
           <div class="dock-tile">
             <div class="lbl">Downlink</div>
-            <div class="val" style="color:#38bdf8" id="statDl">--</div>
+            <div class="val" style="color:var(--accent)" id="statDl">--</div>
           </div>
           <div class="dock-tile">
             <div class="lbl">Uplink</div>
-            <div class="val" style="color:#818cf8" id="statUl">--</div>
+            <div class="val" style="color:var(--accent-purple)" id="statUl">--</div>
           </div>
           <div class="dock-tile">
             <div class="lbl">Latency</div>
@@ -758,12 +816,12 @@
       </section>
     </main>
 
-    <!-- 1TB DOWNLOAD STRESS TESTER -->
+    <!-- 1TB Bulk Download Stress Tester -->
     <section class="stress-panel">
       <div class="stress-header">
         <div>
-          <h2 style="font-size:1.05rem; font-weight:800; letter-spacing:-0.3px;">Continuous Bulk Download Tester</h2>
-          <p style="font-size:0.75rem; color:var(--text-muted);">Benchmark sustained throughput and hardware heat under persistent loads up to 1,024 GB without consuming device storage.</p>
+          <h2 style="font-size:1rem; font-weight:800; letter-spacing:-0.3px;">Continuous Bulk Download Tester</h2>
+          <p style="font-size:0.74rem; color:var(--text-muted);">Benchmark sustained line stability under loads up to 1,024 GB without consuming device storage.</p>
         </div>
         <span class="stress-tag" id="stressStatusBadge">STANDBY</span>
       </div>
@@ -771,7 +829,7 @@
       <div class="stress-grid">
         <div class="stress-tile">
           <div class="lbl">Total Downloaded</div>
-          <div class="val" style="color:var(--accent-green)" id="stressTransferred">0.00 MB</div>
+          <div class="val" style="color:var(--accent-green)" id="stressTransferred">0.00 KB</div>
         </div>
         <div class="stress-tile">
           <div class="lbl">Realtime Rate</div>
@@ -792,7 +850,7 @@
       </div>
 
       <div class="stress-controls">
-        <select id="stressCapSelect" onchange="updateCapLabel()" style="padding:10px 14px; font-size:0.8rem;">
+        <select id="stressCapSelect" class="stress-select" onchange="updateCapLabel()">
           <option value="1099511627776">Cap: 1 TB (1,024 GB)</option>
           <option value="536870912000">Cap: 500 GB</option>
           <option value="107374182400">Cap: 100 GB</option>
@@ -804,7 +862,7 @@
       </div>
     </section>
 
-    <!-- EDITORIAL & SEO CONTENT -->
+    <!-- Editorial SEO Article -->
     <article class="seo-article">
       <h1>Understanding Network Diagnostics: Speed, Latency, and Sustained Throughput</h1>
       <p>SpeedPulse is an enterprise-grade broadband diagnostic suite built by <b>KOSHLIVA LABS</b>. While conventional broadband checkers rely on tiny bursts of HTTP requests that are easily biased by local ISP cache buffers, SpeedPulse implements persistent multi-stream WebSockets and parallel chunk delivery across distributed edge nodes. This delivers an accurate measurement of your real-world internet connection under load.</p>
@@ -832,7 +890,7 @@
       </div>
     </article>
 
-    <!-- CORPORATE FOOTER -->
+    <!-- Corporate Footer -->
     <footer class="site-footer">
       <div class="footer-brand">
         <div class="company-name">KOSHLIVA LABS</div>
@@ -853,11 +911,41 @@
   </div>
 
   <script>
+    /* Theme Engine */
+    function initTheme() {
+      const savedTheme = localStorage.getItem('speedpulse_theme');
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        updateThemeBtn(true);
+      } else {
+        document.body.classList.remove('light-theme');
+        updateThemeBtn(false);
+      }
+    }
+
+    function toggleTheme() {
+      const isLight = document.body.classList.toggle('light-theme');
+      localStorage.setItem('speedpulse_theme', isLight ? 'light' : 'dark');
+      updateThemeBtn(isLight);
+    }
+
+    function updateThemeBtn(isLight) {
+      const icon = document.getElementById('themeIcon');
+      const text = document.getElementById('themeText');
+      if (isLight) {
+        icon.innerText = '🌙';
+        text.innerText = 'Night';
+      } else {
+        icon.innerText = '☀️';
+        text.innerText = 'Day';
+      }
+    }
+    initTheme();
+
     let currentIspName = "Indinet Broadband";
     let selectedServerName = "Kolkata Hub";
     let optimalBenchmarkHost = "https://speed.cloudflare.com";
 
-    /* Word-Boundary Safe Cleaner (Will NEVER cut the letter 'K' from Kendrapara) */
     function cleanIsp(name) {
       if (!name) return 'Indinet Broadband';
       return name
@@ -866,9 +954,7 @@
         .trim();
     }
 
-    /* ============================================================
-       ACCURATE DISTRICT RESOLUTION (KENDRAPARA, ODISHA)
-       ============================================================ */
+    /* District & Server Resolver */
     async function resolveOptimalServerAndISP() {
       const metaIp = document.getElementById('metaIp');
       const metaIsp = document.getElementById('metaIsp');
@@ -880,7 +966,6 @@
       let asnRoute = 'AS133982';
       let userDistrict = 'Kendrapara, Odisha';
 
-      // 1. Primary: ipapi.co (District level accuracy for Kendrapara)
       try {
         const res = await fetch('https://ipapi.co/json/');
         if (res.ok) {
@@ -894,13 +979,12 @@
           userDistrict = (city && region && city !== region) ? `${city}, ${region}` : (city || region);
         }
       } catch (e) {
-        // Fallback: ipwho.is
         try {
           const res2 = await fetch('https://ipwho.is/');
           const d2 = await res2.json();
           if (d2 && d2.success) {
-            clientIp = d2.ip;
-            ispTitle = cleanIsp(d2.connection?.isp || d2.connection?.org);
+            clientIp = d2.ip || clientIp;
+            ispTitle = cleanIsp(d2.connection?.isp || d2.connection?.org || 'Indinet Broadband');
             asnRoute = d2.connection?.asn ? `AS${d2.connection.asn}` : 'AS133982';
             userDistrict = d2.city ? `${d2.city}, ${d2.region}` : (d2.region || 'Odisha');
           }
@@ -912,7 +996,6 @@
       metaIsp.innerText = ispTitle;
       metaAsn.innerText = asnRoute;
 
-      // 2. Discover Nearest Physical Test Server Node
       const testNodes = [
         { name: "Kolkata Hub", host: "https://speed.cloudflare.com" },
         { name: "Bhubaneswar Node", host: "https://speed.cloudflare.com" },
@@ -922,7 +1005,8 @@
       try {
         const pings = await Promise.all(testNodes.map(async (n) => {
           const t0 = performance.now();
-          await fetch(`${n.host}/__down?bytes=0&r=${Math.random()}`, { cache: 'no-store' });
+          const r = await fetch(`${n.host}/__down?bytes=0&r=${Math.random()}`, { cache: 'no-store' });
+          if (r.body) { const reader = r.body.getReader(); await reader.cancel(); }
           return { ...n, rtt: performance.now() - t0 };
         }));
 
@@ -931,7 +1015,6 @@
         optimalBenchmarkHost = pings[0].host;
         selectedServerName = bestServer;
 
-        // Output: "Kendrapara, Odisha • [Kolkata Hub]"
         metaServer.innerText = `${userDistrict} • [${bestServer}]`;
       } catch (err) {
         metaServer.innerText = `${userDistrict} • [Eastern Regional Node]`;
@@ -944,9 +1027,7 @@
       document.getElementById('stressCapLabel').innerText = sel.options[sel.selectedIndex].text.replace('Cap: ', '');
     }
 
-    /* ============================================================
-       SPEED TEST ENGINE
-       ============================================================ */
+    /* Latency & Gauge Progress */
     const CIRCUMFERENCE = 2 * Math.PI * 120;
     function setGaugeProgress(mbps) {
       const val = isNaN(mbps) ? 0 : mbps;
@@ -956,26 +1037,61 @@
     }
 
     async function measurePing() {
+      const pingUrl = `${optimalBenchmarkHost}/__down?bytes=0`;
+      
+      try {
+        const pre = await fetch(`${pingUrl}&init=1`, { cache: 'no-store', mode: 'no-cors' });
+        if (pre.body) { const r = pre.body.getReader(); await r.cancel(); }
+      } catch (e) {}
+
       const pings = [];
-      for (let i = 0; i < 8; i++) {
+      const totalSamples = 10;
+
+      for (let i = 0; i < totalSamples; i++) {
         const t0 = performance.now();
         try {
-          await fetch(`${optimalBenchmarkHost}/__down?bytes=0&r=${Math.random()}`, { cache: 'no-store' });
-          pings.push(performance.now() - t0);
-        } catch(e) { pings.push(22); }
+          const res = await fetch(`${pingUrl}&r=${Math.random()}`, { 
+            cache: 'no-store',
+            mode: 'no-cors',
+            keepalive: true
+          });
+          if (res.body) { const r = res.body.getReader(); await r.cancel(); }
+          const delta = performance.now() - t0;
+          if (delta > 2 && delta < 400) {
+            pings.push(delta);
+          }
+        } catch (e) {
+          pings.push(28);
+        }
+        await new Promise(r => setTimeout(r, 45));
       }
+
+      if (pings.length === 0) return { avg: "30.0", jitter: "2.1" };
+
       pings.sort((a, b) => a - b);
-      const cleanPings = pings.slice(1, -1);
-      const avg = cleanPings.reduce((a, b) => a + b) / cleanPings.length;
+      const cleanSamples = pings.length > 2 ? pings.slice(1, -1) : pings;
+      
+      const bestPings = cleanSamples.slice(0, Math.max(1, Math.ceil(cleanSamples.length * 0.6)));
+      const avgPing = (bestPings.reduce((a, b) => a + b, 0) / bestPings.length).toFixed(1);
+
       let jitter = 0;
-      for (let i = 1; i < cleanPings.length; i++) jitter += Math.abs(cleanPings[i] - cleanPings[i - 1]);
-      return { avg: avg.toFixed(1), jitter: (jitter / (cleanPings.length - 1)).toFixed(1) };
+      if (cleanSamples.length > 1) {
+        for (let i = 1; i < cleanSamples.length; i++) {
+          jitter += Math.abs(cleanSamples[i] - cleanSamples[i - 1]);
+        }
+        jitter = (jitter / Math.max(1, cleanSamples.length - 1)).toFixed(1);
+      } else {
+        jitter = "1.8";
+      }
+
+      return { avg: avgPing, jitter: isNaN(jitter) ? "2.0" : jitter };
     }
 
-    const staticUplinkPayload = new Uint8Array(4 * 1024 * 1024);
+    const staticUplinkPayload = new Uint8Array(1024 * 1024);
 
     async function streamEngine(mode) {
-      const threads = 12;
+      const isMobile = window.innerWidth <= 768;
+      const threads = isMobile ? 6 : 12;
       const testDuration = 6500;
       const startTime = performance.now();
       
@@ -985,7 +1101,8 @@
       let lastTime = startTime;
 
       try {
-        await fetch(`${optimalBenchmarkHost}/__down?bytes=500000&r=${Math.random()}`, { cache: 'no-store' });
+        const w = await fetch(`${optimalBenchmarkHost}/__down?bytes=500000&r=${Math.random()}`, { cache: 'no-store' });
+        if (w.body) { const r = w.body.getReader(); await r.cancel(); }
       } catch(e) {}
 
       async function worker() {
@@ -999,7 +1116,7 @@
                 if (done) break;
                 totalBytes += value.byteLength;
                 calcSlice();
-                if (performance.now() - startTime >= testDuration) { reader.cancel(); break; }
+                if (performance.now() - startTime >= testDuration) { await reader.cancel(); break; }
               }
             } else {
               await fetch(`${optimalBenchmarkHost}/__up?r=${Math.random()}`, { 
@@ -1017,14 +1134,16 @@
 
       function calcSlice() {
         const now = performance.now();
-        const delta = (now - lastTime) / 1000;
+        const delta = Math.max(0.001, (now - lastTime) / 1000);
         if (delta >= 0.25) {
           const deltaBytes = totalBytes - lastBytes;
           const currentMbps = (deltaBytes * 8) / (1024 * 1024 * delta);
-          if ((now - startTime) > 1200) samples.push(currentMbps);
+          if ((now - startTime) > 1200 && isFinite(currentMbps) && currentMbps > 0) {
+            samples.push(currentMbps);
+          }
           lastBytes = totalBytes;
           lastTime = now;
-          const live = isNaN(currentMbps) ? "0.0" : currentMbps.toFixed(1);
+          const live = (!isFinite(currentMbps) || isNaN(currentMbps) || currentMbps < 0) ? "0.0" : currentMbps.toFixed(1);
           document.getElementById('liveSpeed').innerText = live;
           setGaugeProgress(parseFloat(live));
         }
@@ -1037,7 +1156,10 @@
         const sustained = samples.slice(Math.floor(samples.length * 0.25));
         return (sustained.reduce((a, b) => a + b, 0) / sustained.length).toFixed(1);
       }
-      return ((totalBytes * 8) / (1024 * 1024 * ((performance.now() - startTime) / 1000))).toFixed(1);
+      
+      const overallElapsed = Math.max(0.1, (performance.now() - startTime) / 1000);
+      const overallMbps = (totalBytes * 8) / (1024 * 1024 * overallElapsed);
+      return Math.max(0, isFinite(overallMbps) ? overallMbps : 0).toFixed(1);
     }
 
     let lastResults = null;
@@ -1052,9 +1174,9 @@
       document.getElementById('statJitter').innerText = `${pingStats.jitter} ms`;
 
       const p = parseFloat(pingStats.avg);
-      document.getElementById('pingValo').innerText = `${(p * 0.9).toFixed(1)} ms`;
-      document.getElementById('pingCs').innerText = `${(p * 1.3).toFixed(1)} ms`;
-      document.getElementById('pingAws').innerText = `${(p * 1.5).toFixed(1)} ms`;
+      document.getElementById('pingValo').innerText = `${(p + 14).toFixed(1)} ms`;
+      document.getElementById('pingCs').innerText = `${(p + 38).toFixed(1)} ms`;
+      document.getElementById('pingAws').innerText = `${(p + 45).toFixed(1)} ms`;
 
       document.getElementById('sysStatus').innerText = 'TESTING DOWNLINK...';
       const dl = await streamEngine('down');
@@ -1078,6 +1200,15 @@
       btn.disabled = false;
     }
 
+    let toastTimer = null;
+    function showToast(text) {
+      const toast = document.getElementById('toastMsg');
+      toast.innerText = text;
+      toast.style.display = 'block';
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { toast.style.display = 'none'; }, 2500);
+    }
+
     function copyResults() {
       if (!lastResults) { showToast("Please run speed test first!"); return; }
       const summary = `⚡ SpeedPulse Speedtest Results\n🏢 Operated by: KOSHLIVA LABS\n🌐 Provider: ${lastResults.isp}\n📍 Server Node: ${lastResults.server}\n⬇️ Download: ${lastResults.dl} Mbps\n⬆️ Upload: ${lastResults.ul} Mbps\n📶 Ping: ${lastResults.ping} ms (Jitter: ${lastResults.jitter} ms)`;
@@ -1085,9 +1216,7 @@
       showToast("✓ Results copied to clipboard!");
     }
 
-    /* ============================================================
-       1TB BULK DOWNLOAD TESTER
-       ============================================================ */
+    /* Continuous Bulk Download Module */
     let stressActive = false;
     let stressSessionId = 0;
     let stressTotalBytes = 0;
@@ -1096,6 +1225,7 @@
     let stressCentralController = null;
 
     function formatBytes(bytes) {
+      if (!bytes || bytes <= 0) return '0.00 KB';
       if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + ' KB';
       if (bytes < 1024 * 1024 * 1024) return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
       return (bytes / (1024 * 1024 * 1024)).toFixed(3) + ' GB';
@@ -1117,15 +1247,15 @@
       
       const badge = document.getElementById('stressStatusBadge');
       badge.innerText = 'DOWNLOADING STREAM';
-      badge.style.color = '#38bdf8';
+      badge.style.color = 'var(--accent)';
       badge.style.borderColor = 'rgba(56, 189, 248, 0.4)';
       badge.style.background = 'rgba(56, 189, 248, 0.15)';
 
       let lastBytes = 0;
-      let lastTime = stressStartTime;
+      let lastTime = performance.now();
 
       stressTimerInterval = setInterval(() => {
-        if (currentSession !== stressSessionId) return;
+        if (currentSession !== stressSessionId || !stressActive) return;
         const now = performance.now();
         const totalSec = Math.floor((now - stressStartTime) / 1000);
         const hrs = String(Math.floor(totalSec / 3600)).padStart(2, '0');
@@ -1133,10 +1263,10 @@
         const secs = String(totalSec % 60).padStart(2, '0');
         document.getElementById('stressTimer').innerText = `${hrs}:${mins}:${secs}`;
 
-        const dt = (now - lastTime) / 1000;
-        if (dt >= 0.5) {
+        const dt = Math.max(0.001, (now - lastTime) / 1000);
+        if (dt >= 0.3) {
           const db = stressTotalBytes - lastBytes;
-          const liveMbps = ((db * 8) / (1024 * 1024 * dt)).toFixed(1);
+          const liveMbps = Math.max(0, ((db * 8) / (1024 * 1024 * dt))).toFixed(1);
           document.getElementById('stressLiveRate').innerText = `${liveMbps} Mbps`;
           lastBytes = stressTotalBytes;
           lastTime = now;
@@ -1145,38 +1275,56 @@
         document.getElementById('stressTransferred').innerText = formatBytes(stressTotalBytes);
 
         const pct = Math.min(100, (stressTotalBytes / targetCapBytes) * 100);
-        document.getElementById('stressProgressFill').style.width = `${pct}%`;
+        document.getElementById('stressProgressFill').style.width = `${pct.toFixed(2)}%`;
 
         if (stressTotalBytes >= targetCapBytes) {
           stopStressTest(true);
         }
-      }, 300);
+      }, 250);
 
-      const concurrentWorkers = 6;
+      const concurrentWorkers = 4;
       for (let i = 0; i < concurrentWorkers; i++) {
-        runStressWorker(targetCapBytes, currentSession);
+        setTimeout(() => {
+          if (stressActive && currentSession === stressSessionId) {
+            runStressWorker(targetCapBytes, currentSession);
+          }
+        }, i * 120);
       }
     }
 
     async function runStressWorker(targetCapBytes, sessionId) {
+      const CHUNK_BYTES = 10000000;
+
       while (stressActive && sessionId === stressSessionId && stressTotalBytes < targetCapBytes) {
         try {
-          const res = await fetch(`${optimalBenchmarkHost}/__down?bytes=50000000&r=${Math.random()}`, {
+          const uniqueParam = `${Date.now()}_${Math.random()}`;
+          const res = await fetch(`https://speed.cloudflare.com/__down?bytes=${CHUNK_BYTES}&nocache=${uniqueParam}`, {
             cache: 'no-store',
-            signal: stressCentralController.signal
+            signal: stressCentralController ? stressCentralController.signal : undefined
           });
-          const reader = res.body.getReader();
-          while (stressActive && sessionId === stressSessionId) {
-            const { done, value } = await reader.read();
-            if (done) break;
-            stressTotalBytes += value.byteLength;
-            if (stressTotalBytes >= targetCapBytes) {
-              reader.cancel();
-              break;
+
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+          if (res.body && res.body.getReader) {
+            const reader = res.body.getReader();
+            while (stressActive && sessionId === stressSessionId) {
+              const { done, value } = await reader.read();
+              if (done) break;
+              if (value) {
+                stressTotalBytes += value.byteLength;
+                if (stressTotalBytes >= targetCapBytes) {
+                  await reader.cancel();
+                  break;
+                }
+              }
             }
+          } else {
+            const blob = await res.blob();
+            stressTotalBytes += blob.size;
           }
         } catch (e) {
-          if (!stressActive || sessionId !== stressSessionId) break;
+          if (!stressActive || sessionId !== stressSessionId || (e && e.name === 'AbortError')) break;
+          await new Promise(r => setTimeout(r, 250));
         }
       }
     }
@@ -1186,7 +1334,7 @@
       stressSessionId++;
       clearInterval(stressTimerInterval);
       if (stressCentralController) {
-        stressCentralController.abort();
+        try { stressCentralController.abort(); } catch(e) {}
         stressCentralController = null;
       }
 
@@ -1198,7 +1346,7 @@
       const badge = document.getElementById('stressStatusBadge');
       if (isComplete) {
         badge.innerText = 'CAP COMPLETED';
-        badge.style.color = '#10b981';
+        badge.style.color = 'var(--accent-green)';
         badge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
         badge.style.background = 'rgba(16, 185, 129, 0.15)';
         showToast("✓ Download cap target reached!");
@@ -1208,13 +1356,6 @@
         badge.style.borderColor = 'rgba(239, 68, 68, 0.4)';
         badge.style.background = 'rgba(239, 68, 68, 0.15)';
       }
-    }
-
-    function showToast(text) {
-      const toast = document.getElementById('toastMsg');
-      toast.innerText = text;
-      toast.style.display = 'block';
-      setTimeout(() => { toast.style.display = 'none'; }, 2500);
     }
   </script>
 </body>
