@@ -6,9 +6,9 @@
 
   <!-- Core Google SEO Suite -->
   <title>SpeedPulse — Free Internet Speed Test, WiFi & 5G Broadband Checker</title>
-  <meta name="description" content="SpeedPulse by KOSHLIVA LABS. Accurate real-time internet speed test measuring download, upload, ping latency, jitter, and continuous bulk bandwidth stress testing[cite: 1].">
-  <meta name="keywords" content="speed test, internet speed test, wifi speed test, broadband speed test, 5g speed test, check internet speed, koshliva labs, speedpulse, data stress test, ping test[cite: 1]">
-  <meta name="author" content="KOSHLIVA LABS[cite: 1]">
+  <meta name="description" content="SpeedPulse by KOSHLIVA LABS. Accurate real-time internet speed test measuring download, upload, ping latency, jitter, and continuous bulk bandwidth stress testing.">
+  <meta name="keywords" content="speed test, internet speed test, wifi speed test, broadband speed test, 5g speed test, check internet speed, koshliva labs, speedpulse, data stress test, ping test">
+  <meta name="author" content="KOSHLIVA LABS">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://speedpulse.site/">
 
@@ -22,7 +22,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://speedpulse.site/">
   <meta property="og:title" content="SpeedPulse — Free Internet Speed Test by KOSHLIVA LABS">
-  <meta property="og:description" content="Accurate internet speed test, ping diagnostics, and bulk bandwidth stress benchmark[cite: 1].">
+  <meta property="og:description" content="Accurate internet speed test, ping diagnostics, and bulk bandwidth stress benchmark.">
   <meta property="og:site_name" content="SpeedPulse | KOSHLIVA LABS">
 
   <!-- JSON-LD Structured Data Schema -->
@@ -48,7 +48,7 @@
           "@type": "Organization",
           "name": "KOSHLIVA LABS"
         },
-        "description": "Enterprise-grade internet speed test measuring download speed, upload speed, latency, jitter, and continuous line stress benchmarking[cite: 1].",
+        "description": "Enterprise-grade internet speed test measuring download speed, upload speed, latency, jitter, and continuous line stress benchmarking.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
       }
     ]
@@ -441,7 +441,7 @@
       flex-shrink: 0;
     }
 
-    /* Dynamic Greeting & Live Clock Banner */
+    /* Dynamic Universal Event & Live Clock Banner */
     .greeting-clock-bar {
       background: var(--surface-base);
       border: 1px solid var(--border);
@@ -760,7 +760,7 @@
       </nav>
     </header>
 
-    <!-- Dynamic Greeting & Live Clock Banner -->
+    <!-- Dynamic Universal Event & Live Clock Banner -->
     <div class="greeting-clock-bar">
       <div class="wish" id="dynamicWishText">Loading Greeting...</div>
       <div class="clock" id="liveClockText">Loading Time...</div>
@@ -949,6 +949,14 @@
           <h3>About KOSHLIVA LABS Architecture</h3>
           <p>Learn how our zero-storage client-side stress testing algorithms protect system privacy while thoroughly testing line stability.</p>
         </a>
+        <a href="/privacy-policy.html" class="guide-card">
+          <h3>Privacy Policy & Data Security</h3>
+          <p>Understand how we protect user telemetry data and maintain strict client-side privacy standards.</p>
+        </a>
+        <a href="/terms.html" class="guide-card">
+          <h3>Terms of Service & Usage Policy</h3>
+          <p>Review the guidelines, limitations, and terms governing the use of SpeedPulse diagnostics.</p>
+        </a>
       </div>
     </article>
 
@@ -1004,31 +1012,110 @@
     }
     initTheme();
 
-    /* Live Time & Dynamic Greeting Engine */
+    /* Complete All-India Universal Event & Festival Engine with Live Date/Time */
     function updateLiveClockAndWishes() {
       const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1; // 1 to 12
+      const date = now.getDate();       // 1 to 31
+      const dayOfWeek = now.getDay();   // 0 (Sun) to 6 (Sat)
       const hours = now.getHours();
       const minutes = String(now.getMinutes()).padStart(2, '0');
       const seconds = String(now.getSeconds()).padStart(2, '0');
       
       let greeting = "";
-      if (hours >= 4 && hours < 12) {
-        greeting = "🌅 Good Morning, Welcome to SpeedPulse!";
-      } else if (hours >= 12 && hours < 17) {
-        greeting = "☀️ Good Afternoon! Ready for your speed test?";
-      } else if (hours >= 17 && hours < 21) {
-        greeting = "🌆 Good Evening! Checking your evening bandwidth?";
-      } else {
-        greeting = "🌙 Good Night! Late night speed diagnostics active.";
+      const todayKey = `${month}-${date}`;
+
+      // 1. All-India Fixed Date National, Cultural & Special Events (Permanent)
+      const fixedEvents = {
+        "1-1": `🎉 Happy New Year ${year}! Wishing you a wonderful year ahead!`,
+        "1-12": " Vivekananda Jayanti & National Youth Day!",
+        "1-14": "🪁 Happy Makar Sankranti / Pongal / Lohri!",
+        "1-23": " Netaji Subhas Chandra Bose Jayanti (Parakram Diwas)!",
+        "1-26": "🇮🇳 Happy Republic Day! Jai Hind!",
+        "2-28": "🔬 National Science Day!",
+        "3-8": "🌍 Happy International Women's Day!",
+        "4-14": "🌾 Happy Baisakhi & Dr. B.R. Ambedkar Jayanti!",
+        "5-1": "🛠️ Happy International Workers' Day (Mazdoor Divas)!",
+        "5-11": " National Technology Day!",
+        "6-5": "🌱 World Environment Day! Go Green!",
+        "6-21": "🧘 International Day of Yoga!",
+        "7-26": " Kargil Vijay Diwas! Saluting our brave soldiers.",
+        "8-15": "🇮🇳 Happy Independence Day! Proud to be Indian!",
+        "8-29": " National Sports Day (Major Dhyan Chand Jayanti)!",
+        "9-5": "📚 Happy Teachers' Day! Honoring our mentors.",
+        "9-14": " Hindi Diwas!",
+        "9-15": " Engineers' Day in India!",
+        "10-2": "🕊️ Happy Gandhi Jayanti & Lal Bahadur Shastri Jayanti!",
+        "10-31": "🏃 National Unity Day (Rashtriya Ekta Diwas) & Sardar Patel Jayanti!",
+        "11-11": " National Education Day (Maulana Abul Kalam Azad Jayanti)!",
+        "11-14": "👶 Happy Children's Day & World Diabetes Day!",
+        "11-26": " Constitution Day of India (Samvidhan Divas)!",
+        "12-4": " Indian Navy Day!",
+        "12-22": " National Mathematics Day (Ramanujan Jayanti)!",
+        "12-25": "🎄 Merry Christmas! Wishing you peace and joy!"
+      };
+
+      // 2. Dynamic Year-Wise Religious & Lunar Festivals (2026 & 2027)
+      let festivalWish = "";
+
+      if (year === 2026) {
+        if (month === 2 && (date >= 13 && date <= 16)) festivalWish = "🔱 Har Har Mahadev! Happy Maha Shivratri!";
+        else if (month === 3 && (date >= 2 && date <= 5)) festivalWish = "🎨 Happy Holi! Have a colorful celebration!";
+        else if (month === 3 && (date >= 20 && date <= 25)) festivalWish = "🌙 Eid Mubarak! Wishing peace and prosperity.";
+        else if (month === 3 && (date >= 28 && date <= 31)) festivalWish = "🌸 Happy Ram Navami & Chaitra Navratri!";
+        else if (month === 8 && (date >= 25 && date <= 28)) festivalWish = "🧵 Happy Raksha Bandhan!";
+        else if (month === 9 && (date >= 3 && date <= 6)) festivalWish = "🪈 Happy Krishna Janmashtami! Jai Shri Krishna.";
+        else if (month === 9 && (date >= 12 && date <= 18)) festivalWish = "🐘 Ganpati Bappa Morya! Happy Ganesh Chaturthi!";
+        else if (month === 10 && (date >= 18 && date <= 22)) festivalWish = "🪔 Happy Dussehra (Vijayadashami)!";
+        else if (month === 11 && (date >= 6 && date <= 11)) festivalWish = "✨ Happy Diwali & Prosperous New Year!";
+        else if (month === 11 && (date >= 12 && date <= 16)) festivalWish = "☀️ Happy Chhath Puja! Jai छठी Maiya.";
+        else if (month === 11 && (date >= 20 && date <= 24)) festivalWish = "🯆 Happy Guru Nanak Gurpurab!";
+      } else if (year === 2027) {
+        if (month === 3 && (date >= 6 && date <= 8)) festivalWish = "🔱 Har Har Mahadev! Happy Maha Shivratri!";
+        else if (month === 3 && (date >= 21 && date <= 23)) festivalWish = "🎨 Happy Holi! Have a colorful celebration!";
+        else if (month === 4 && (date >= 13 && date <= 15)) festivalWish = "🌸 Happy Ram Navami & Chaitra Navratri!";
+        else if (month === 8 && (date >= 14 && date <= 16)) festivalWish = "🧵 Happy Raksha Bandhan!";
+        else if (month === 8 && (date >= 23 && date <= 25)) festivalWish = "🪈 Happy Krishna Janmashtami!";
+        else if (month === 9 && (date >= 3 && date <= 6)) festivalWish = "🐘 Ganpati Bappa Morya! Happy Ganesh Chaturthi!";
+        else if (month === 10 && (date >= 9 && date <= 11)) festivalWish = "🪔 Happy Dussehra (Vijayadashami)!";
+        else if (month === 10 && (date >= 28 && date <= 30)) festivalWish = "✨ Happy Diwali & Prosperous New Year!";
+        else if (month === 11 && (date >= 2 && date <= 5)) festivalWish = "☀️ Happy Chhath Puja! Jai छठी Maiya.";
+        else if (month === 11 && (date >= 12 && date <= 14)) festivalWish = "🯆 Happy Guru Nanak Gurpurab!";
       }
 
+      // Priority Selection: 1. Fixed Special Days -> 2. Religious Festivals -> 3. Weekends -> 4. Standard Time
+      if (fixedEvents[todayKey]) {
+        greeting = `✨ ${fixedEvents[todayKey]}`;
+      } else if (festivalWish !== "") {
+        greeting = `✨ ${festivalWish}`;
+      } else if (dayOfWeek === 0) {
+        greeting = "🌴 Happy Sunday! Enjoy your weekend relaxation.";
+      } else if (dayOfWeek === 6) {
+        greeting = "🎉 Happy Saturday! Have a great weekend ahead.";
+      } else {
+        if (hours >= 4 && hours < 12) {
+          greeting = "🌅 Good Morning, Welcome to SpeedPulse!";
+        } else if (hours >= 12 && hours < 17) {
+          greeting = "☀️ Good Afternoon! Ready for your speed test?";
+        } else if (hours >= 17 && hours < 21) {
+          greeting = "🌆 Good Evening! Checking your evening bandwidth?";
+        } else {
+          greeting = "🌙 Good Night! Late night speed diagnostics active.";
+        }
+      }
+
+      // Live Date & Time String
       const timeStr = `${now.toLocaleDateString()} | ${hours % 12 || 12}:${minutes}:${seconds} ${hours >= 12 ? 'PM' : 'AM'}`;
       
       const wishEl = document.getElementById('dynamicWishText');
       const clockEl = document.getElementById('liveClockText');
+      
       if (wishEl) wishEl.innerText = greeting;
       if (clockEl) clockEl.innerText = `🕒 ${timeStr}`;
     }
+
+    // Live update runner every second
     setInterval(updateLiveClockAndWishes, 1000);
     updateLiveClockAndWishes();
 
